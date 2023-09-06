@@ -1,13 +1,213 @@
-body {
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa&display=swap");
+
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Comfortaa", cursive;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  min-height: 100vh;
+  background-image: linear-gradient(
+    to top,
+    #bdc2e8 0%,
+    #bdc2e8 1%,
+    #e6dee9 100%
+  );
+}
+
+.input-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 0 40px;
+}
+
+.input-form input {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  border: none;
+  border-radius: 25px 0 0 25px;
+  outline: none;
+  padding: 0 20px;
+  width: 490px;
+  height: 50px;
+  font-size: 16px;
+}
+
+button {
+  cursor: pointer;
+}
+
+.input-form button {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  border: none;
+  border-radius: 0 25px 25px 0;
+  width: 50px;
+  height: 50px;
+  background-image: linear-gradient(to bottom, #fdfcfb 0%, #e2d1c3 100%);
+}
+
+.input-form button:hover {
+  background-image: linear-gradient(to right, #fdfcfb 0%, #e2d1c3 100%);
+}
+
+svg {
+  width: 20px;
+  height: 20px;
+}
+
+.todo-list-outer-container {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 20px;
+}
+
+.todo-list-container {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  border-radius: 10px;
+  background-color: rgba(256, 256, 256, 0.7);
+  background-blend-mode: multiply;
+  font-size: 16px;
+}
+
+.todo-list-header {
+  display: flex;
+  position: relative;
+  text-align: center;
+}
+
+.todo-list-header > p {
+  display: inline-block;
+  position: relative;
+  margin: 0 auto;
+  min-width: 180px;
+  height: 60px;
+  line-height: 60px;
+  color: #373f51;
+  cursor: pointer;
+}
+
+.todo-list-header > p::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #6d59bd;
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.todo-list-header > p:hover {
+  color: #907fd5;
+  transition: color 0.5s ease-out;
+}
+
+p.active {
+  font-weight: bold;
+  color: #6d59bd;
+}
+
+p.active::after {
+  transform: scaleX(1);
+  transform-origin: center;
+}
+
+.todo-count {
+  padding: 20px;
+  text-align: center;
+  color: #7c869c;
+}
+
+.todo-count span:first-child {
+  display: inline-block;
+  border-radius: 10px;
+  margin-right: 10px;
+  width: 30px;
+  height: 20px;
+  line-height: 20px;
+  background: #b7aaea;
+  text-align: center;
+  font-size: 12px;
+  color: #ffffff;
+}
+
+.todo-item-container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  border-bottom: #c2c0c0 1px solid;
+  padding: 20px;
+}
+
+.todo-item-container:last-child {
+  border-bottom: none;
+}
+
+.todo-item-container button {
+  border: none;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  background: none;
+  color: #7b99d1;
+}
+
+.todo-item-container svg {
+  width: 16px;
+  height: 16px;
+}
+
+.is-completed .content {
+  text-decoration: line-through;
+  text-decoration-color: #5a6885;
+  color: #7c869c;
+}
+
+.content {
+  width: 400px;
+  color: #000501;
+  word-wrap: break-word;
+}
+
+.edit-form {
+  position: relative;
+}
+
+.edit-form input {
+  border: 0px;
+  outline: none;
+  width: 360px;
+  height: 20px;
+  background: none;
+  font-size: 16px;
+  text-decoration: underline;
+  color: #ef626c;
+}
+
+.edit-form button {
+  position: absolute;
+  right: -15px;
+  bottom: 0;
+  animation-name: move;
+  animation-duration: 0.6s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-play-state: running;
+  color: #ef626c;
+}
+
+@keyframes move {
+  from {
+    bottom: -8px;
+  }
+  to {
+    bottom: 0;
+  }
 }
